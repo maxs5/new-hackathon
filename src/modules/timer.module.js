@@ -1,41 +1,10 @@
-const menu = document.getElementById('custom-menu');
+import { Module } from '../core/module.js';
+import { removeWithFadeOut } from '../utils.js';
 
-window.addEventListener('contextmenu', e => {
-  e.preventDefault();  // отключаем стандартное меню
-
-  // вычисляем размеры окна и меню
-  const winW = window.innerWidth;
-  const winH = window.innerHeight;
-  const menuW = menu.offsetWidth;
-  const menuH = menu.offsetHeight;
-
-  // начальные координаты
-  let x = e.clientX;
-  let y = e.clientY;
-
-  // корректируем, чтобы меню не выходило за границы
-  if (x + menuW > winW)  x = winW  - menuW;
-  if (y + menuH > winH)  y = winH  - menuH;
-
-  menu.style.left    = x + 'px';
-  menu.style.top     = y + 'px';
-  menu.style.display = 'block';
-});
-
-// Прячем меню при клике вне его
-window.addEventListener('click', e => {
-  if (!menu.contains(e.target)) {
-    menu.style.display = 'none';
+export class TimerModule extends Module {
+  constructor() {
+    super('timer', 'Таймер отсчёта');
   }
-});
-
-// Обработка выбора пункта меню
-menu.addEventListener('click', e => {
-  if (e.target.tagName === 'LI') {
-    const action = e.target.dataset.action;
-    menu.style.display = 'none';
-  }
-});
 
 
 let timerInterval = null;
