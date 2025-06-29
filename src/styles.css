@@ -68,3 +68,82 @@ body {
   filter: blur(1px);
 }
 
+/* Стили контекстного меню */
+#custom-menu {
+  position: absolute;
+  display: none;
+  background-color: #000;    /* чёрный фон */
+  color: #fff;               /* белый цвет текста */
+  border: 1px solid #444;    /* чуть более светлая рамка */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+  z-index: 1000;
+  min-width: 150px;
+  font-family: sans-serif;
+}
+
+#custom-menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 4px 0;
+}
+
+#custom-menu li {
+  padding: 6px 12px;
+  cursor: pointer;
+  white-space: nowrap;
+  /* унаследует белый цвет текста от родителя */
+}
+
+#custom-menu li:hover {
+  background-color: #222;    /* чуть светлее чёрного при наведении */
+}
+
+
+#timer-display {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #000;
+  color: #0f0;
+  padding: 15px;
+  font-family: monospace;
+  border-radius: 8px;
+  z-index: 2000;
+  box-shadow: 0 0 10px #0f0;
+
+  opacity: 0;
+  transform: translateY(20px);
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+#timer-time {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+#timer-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+#timer-buttons button {
+  background-color: #111;
+  color: #0f0;
+  border: 1px solid #0f0;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+#timer-buttons button:hover {
+  background-color: #222;
+}
+
+#timer-display.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
