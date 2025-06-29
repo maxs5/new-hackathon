@@ -1,10 +1,3 @@
-import { Module } from '../core/module.js';
-import { removeWithFadeOut } from '../utils.js';
-
-export class TimerModule extends Module {
-  constructor() {
-    super('timer', 'Таймер отсчёта');
-  }
 
 
 let timerInterval = null;
